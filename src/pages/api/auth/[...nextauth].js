@@ -38,8 +38,8 @@ export default NextAuth({
 			},
 		}),
 		Google({
-			clientId: "http://868137221271-fhg4obe63em68bsvtgapr5dabdca68c9.apps.googleusercontent.com",
-			clientSecret: "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",
+			clientId: "449044971448-mcvg3nmcn9ds007oblps5p3j5gp349n3.apps.googleusercontent.com",
+			clientSecret: "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",
 		}),
 		Apple({
 			clientId: "your_apple_client_id",
