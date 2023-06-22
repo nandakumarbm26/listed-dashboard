@@ -2,27 +2,25 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+	const router = useRouter();
 	const { data: session, status } = useSession();
 
 	// if (status !== "authenticated") {
 	// 	return <p>Loading...</p>;
 	// }
 
-	// if (session) {
-	// 	return (
-	// 		<>
-	// 			<p>Welcome, {session.user?.email}!</p>
-	// 			<button onClick={() => signOut()}>Sign out</button>
-	// 		</>
-	// 	);
-	// }
+	if (session) {
+		router.push('/dashboard'); 
+	}
+	else {
 	return (
 		<main className="w-full  flex-col md:flex-row  gap-10 md:gap- flex min-h-screen bg-background">
 			<div className=" w-full md:w-[45%]  min-h-[20vh] bg-black md:min-h-screen  flex md:justify-center items-center">
-			<Link href="/dashboard">
+			<Link href="/">
 				<div className="text-6xl ml-5 font-semibold text-white ">Board.</div></Link>
 			</div>
 			<div className="w-full p-5 text-black flex justify-center items-center bg-background">
@@ -32,7 +30,7 @@ export default function Home() {
 						<div className="mt-1 text-base ">Sign in with your account</div>
 					</div>
 					<div className="flex gap-5">
-						<button
+				<button
 							className=" text-secondaryText flex gap-1 justify-center items-center rounded-[10px] text-xs px-3 py-1 bg-white"
 							onClick={() => signIn("google")}
 						>
@@ -101,4 +99,5 @@ export default function Home() {
 			</div>
 		</main>
 	);
+}
 }
